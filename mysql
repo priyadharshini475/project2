@@ -1,0 +1,40 @@
+create database BooksDB;
+drop database BooksDB;
+use BooksDB;
+create table Books(
+    s_no int primary Key,
+    book_title varchar(30),
+    author_name varchar(30),
+    genre varchar(30),
+    year int,
+    price int);
+    insert into Books values(1,"cindrella","walter Elias Disney","Cartoon",1997,5000);
+    insert into Books values(2,"Zombie","Hitler","Horror",1987,5000);
+    insert into Books values(3,"Life of Pie","Mary Comb","Life Lesson",2007,2000);
+    insert into Books values(4,"Life of Lord","Prince Jack","Fiction",1907,4000);
+    insert into Books values(5,"World tour","William","action",2002,5500);
+    insert into Books values(6,"Poppins","Wright Brothers","Cartoon",2010,3000);
+    select*from Books;
+    select*from Books
+    where book_title like 'Life%';
+    update Books
+    set price="10000"
+    where book_title="cindrella";
+    delete from Books
+    where book_title="Zombie";
+    select avg(price) from Books;
+    drop table author;
+    drop table Books;
+    create table author(
+        serial_no int primary key,
+        age int,
+        author_native varchar(30),
+        author_name varchar(50),
+        s_no int,
+        constraint fk_s_no foreign key(s_no) references Books(s_no)
+        on delete set null);
+	insert into author values(1,20,"Dubai","William",5);
+    insert into author values(2,25,"Bombay","Hitler",2);
+    insert into author values(3,30,"Sidney","Walter Elias Disney",1);
+    insert into author values(4,40,"Darjiling","Wright Brothers",6);
+    drop table author;
